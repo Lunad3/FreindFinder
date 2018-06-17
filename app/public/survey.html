@@ -170,8 +170,16 @@
 
             <br>
             <br>
+
             <h3 id="msg"></h3>
+
+            <br>
+            <br>
+
             <button type="button" class="btn btn-primary" style="width: 100%" id="submit">FIND A FRIEND</button>
+
+            <br>
+            <br>
 
         </div>
         <div class="col-2"></div>
@@ -196,20 +204,30 @@
         return false;
     };
 
+    var getScores = function(){
+        var result = [];
+        for (var q=1; q<=10; q++){
+            result.push(parseInt($("#q"+q.toString()).val()));
+        }
+        return result;
+    };
+
     $("#submit").on("click",function(){
-        console.log("button Pressed");
         if(!allInputsfilled()){
-            console.log("not all inputs filled");
             $("#msg").text("Please fill in ALL inputs");
         }
         else{
             $("#msg").text("");
-            console.log("all inputs filled")
+            var user = {
+                "name"  : $("#name").val(),
+                "photo" : $("#photo").val(),
+                "scores": getScores()
+            };
+
+            console.log(user);
         }
 
     });
-
-
 
     </script>
 </body>
